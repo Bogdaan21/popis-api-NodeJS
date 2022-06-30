@@ -7,9 +7,6 @@ router.route('/')
     .get(mjestoControler.getAllMjesto)
     .post(mjestoControler.insertMjesto);
 
-router.route('/getMjestoByArtikal/:aid')
-    .get(mjestoControler.getMjestoByArtikal);
-
 router.route ('/:mid')
     .get(mjestoControler.getMjestoById)
     .put(mjestoControler.updateMjesto)

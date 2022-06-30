@@ -11,7 +11,7 @@ const getArtikalById = async (request: Request, response: Response) => {
     response.send(result[0]);
 }
 
-const getArtikalByMjesto = async (request: Request, response: Response) => { // ne radi
+const getArtikalByMjesto = async (request: Request, response: Response) => { 
     const result = await artikalRespositori.getArtikalByMjesto(parseInt(request.params.mid));
     response.send(result);
 }

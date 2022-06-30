@@ -21,15 +21,6 @@ const getMjestoById = async (mid: number) => {
     }
 }
 
-const getMjestoByArtikal = async (aid: number) => { // ne radi
-    try {
-        const result = await dbConnection.query(`SELECT * FROM mjesto WHERE aid = ?`, [aid]);
-        return result
-    }
-    catch (e) {
-        return null;
-    }
-}
 
 const insertMjesto = async (mjesto: Mjesto) => {
     try {
@@ -56,4 +47,4 @@ const deleteMjesto = async (mid: number) => {
         return result;
 }
 
-export default {gettingAllMjesto, getMjestoById, getMjestoByArtikal, insertMjesto, updateMjesto, deleteMjesto};
+export default {gettingAllMjesto, getMjestoById, insertMjesto, updateMjesto, deleteMjesto};

@@ -23,7 +23,7 @@ const getArtikalById = async (aid: number) => {
 
 const getArtikalByMjesto = async (mid: number) => { // radi
     try {
-        const result = await dbConnection.query(`SELECT * FROM artikal WHERE mid = ?`, [mid]);
+        const result = await dbConnection.query(`SELECT * FROM artikal WHERE mjesto_id = ?`, [mid]);
         return result;
     }
     catch(e) {

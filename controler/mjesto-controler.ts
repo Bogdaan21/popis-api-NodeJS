@@ -12,11 +12,6 @@ const getMjestoById = async (request: Request, response: Response) => {
     response.send(result[0]);
 }
 
-const getMjestoByArtikal = async (request: Request, response: Response) => {  // ne radi
-    const result = await mjestoRepositori.getMjestoByArtikal(parseInt(request.params.aid));
-    response.send(result);
-}
-
 const insertMjesto = async (request: Request, response: Response) => {
     const result = await mjestoRepositori.insertMjesto(request.body);
     response.send(result);
@@ -32,4 +27,4 @@ const deleteMjesto = async (request: Request, response: Response) => {
     response.send(result);
 }
 
-export default {getAllMjesto, getMjestoById, getMjestoByArtikal, insertMjesto, deleteMjesto, updateMjesto} ;
+export default {getAllMjesto, getMjestoById, insertMjesto, deleteMjesto, updateMjesto} ;
