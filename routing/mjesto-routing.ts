@@ -7,8 +7,8 @@ router.route('/')
     .get(mjestoControler.getAllMjesto)
     .post(mjestoControler.insertMjesto);
 
-router.route('/MjestoByArtikal/:broj_kancelarije')
-    .get(mjestoControler.getByArtikal); // ne radi.
+router.route('/getMjestoByArtikal/:aid')
+    .get(mjestoControler.getMjestoByArtikal);
 
 router.route ('/:mid')
     .get(mjestoControler.getMjestoById)

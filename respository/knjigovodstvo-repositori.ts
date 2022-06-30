@@ -23,7 +23,7 @@ catch(e) {
 
 const insertKnjigovodstvo = async (knjigovodstvena_evidencija: Knjigovodstvena_evidencija) => {
     try {
-        const result = dbConnection.query(`INSERT INTO knjigovodstvena_evidencija (konto, god_nabavke, popisano, nepopisano, otpisano) VALUE (?, ?, ?, ?, ?)`, [knjigovodstvena_evidencija.god_nabavke, knjigovodstvena_evidencija.konto, knjigovodstvena_evidencija.nepopisano, knjigovodstvena_evidencija.popisano, knjigovodstvena_evidencija.otpisano])
+        const result = dbConnection.query(`INSERT INTO knjigovodstvena_evidencija (konto, godina_nabavke) VALUE (?, ?)`, [knjigovodstvena_evidencija.godina_nabavke, knjigovodstvena_evidencija.konto])
         return result;
     }
 catch(e) {
@@ -33,7 +33,7 @@ catch(e) {
 
 const updateKnjigovodstvo = async (knjigovodstvena_evidencija: Knjigovodstvena_evidencija, kid: number) => {
     try {
-        const result = dbConnection.query(`UPDATE knjigovodstvena_evidencija SET konto = ?, god_nabavke = ?, popisano = ?, nepopisano = ?, otpisano = ? WHERE kid = ?`, [knjigovodstvena_evidencija.god_nabavke, knjigovodstvena_evidencija.konto, knjigovodstvena_evidencija.popisano, knjigovodstvena_evidencija.nepopisano, knjigovodstvena_evidencija.otpisano, kid])
+        const result = dbConnection.query(`UPDATE knjigovodstvena_evidencija SET konto = ?, godina_nabavke = ? WHERE kid = ?`, [knjigovodstvena_evidencija.konto, knjigovodstvena_evidencija.godina_nabavke, kid])
         return result;
     }
 catch(e) {

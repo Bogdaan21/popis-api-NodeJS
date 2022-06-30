@@ -12,8 +12,8 @@ const getMjestoById = async (request: Request, response: Response) => {
     response.send(result[0]);
 }
 
-const getByArtikal = async (request: Request, response: Response) => {  // ne radi
-    const result = await mjestoRepositori.getByArtikal(request.params.broj_kancelarije, parseInt(request.params.aid));
+const getMjestoByArtikal = async (request: Request, response: Response) => {  // ne radi
+    const result = await mjestoRepositori.getMjestoByArtikal(parseInt(request.params.aid));
     response.send(result);
 }
 
@@ -32,4 +32,4 @@ const deleteMjesto = async (request: Request, response: Response) => {
     response.send(result);
 }
 
-export default {getAllMjesto, getMjestoById, getByArtikal, insertMjesto, deleteMjesto, updateMjesto} ;
+export default {getAllMjesto, getMjestoById, getMjestoByArtikal, insertMjesto, deleteMjesto, updateMjesto} ;

@@ -10,4 +10,5 @@ router.route('/:cid')
     .get(cijenaControler.getCijenaById)
     .put(cijenaControler.updateCijena)
     .delete(cijenaControler.deleteCijena)
+    
 export default router;

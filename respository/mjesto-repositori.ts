@@ -21,9 +21,9 @@ const getMjestoById = async (mid: number) => {
     }
 }
 
-const getByArtikal = async (broj_kancelarije: string, aid: number) => {
+const getMjestoByArtikal = async (aid: number) => { // ne radi
     try {
-        const result = await dbConnection.query(`SELECT FROM artikal WHERE broj_kancelarije = ?`, [broj_kancelarije, aid]);
+        const result = await dbConnection.query(`SELECT * FROM mjesto WHERE aid = ?`, [aid]);
         return result
     }
     catch (e) {
@@ -56,4 +56,4 @@ const deleteMjesto = async (mid: number) => {
         return result;
 }
 
-export default {gettingAllMjesto, getMjestoById, getByArtikal, insertMjesto, updateMjesto, deleteMjesto};
+export default {gettingAllMjesto, getMjestoById, getMjestoByArtikal, insertMjesto, updateMjesto, deleteMjesto};
