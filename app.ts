@@ -7,8 +7,10 @@ import cijenaRouter from './routing/cijena-routing';
 import knjigovodstvoRouter from './routing/knjigovodstvo-routing';
 import statusRouter from './routing/status-routing';
 import vrstaRouter from './routing/vrsta-routing';
+import cors from 'cors';
 let app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/artikal', artikalRouter);
