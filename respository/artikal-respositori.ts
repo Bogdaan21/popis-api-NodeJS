@@ -33,17 +33,19 @@ const getArtikalByMjesto = async (mid: number) => { // radi
 
 const insertAllArtikal = async (artikal: Artikal) => {
     try {
-        const result = await dbConnection.query(`INSERT INTO artikal (model, inventarski_broj_stari, inventarski_broj_novi) VALUE (?, ?, ?)`, [artikal.model, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi]);
+        console.log(artikal);
+        const result = await dbConnection.query(`INSERT INTO artikal (model, zaduzenje, inventarski_broj_stari, inventarski_broj_novi, cijena_id, knjigovodstvena_evidencija_id, mjesto_id, vrsta_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?)`, [artikal.model, artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.cijena_id, artikal.knjigovodstvena_evidencija_id, artikal.mjesto_id, artikal.vrsta_id]);
         return result;
     }
     catch(e) {
+        console.log(e);
         return null;
     }
 }
 
 const updateAllArtikal = async (artikal: Artikal, aid: number) => {
     try {
-        const result = await dbConnection.query(`UPDATE artikal SET model = ?, inventarski_broj_stari = ?, inventarski_broj_novi = ? WHERE aid = ?`, [artikal.model, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, aid]);
+        const result = await dbConnection.query(`UPDATE artikal SET model = ?,zaduzenje = ?, inventarski_broj_stari = ?, inventarski_broj_novi = ?, cijena_id = ?, knjigovodstvena_evidencija_id = ?, mjesto_id = ?, vrsta_id = ? WHERE aid = ?`, [artikal.model,artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.cijena_id, artikal.knjigovodstvena_evidencija_id, artikal.mjesto_id, artikal.vrsta_id, aid]);
         return result;
     }
     catch(e) {

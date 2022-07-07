@@ -23,7 +23,7 @@ catch(e) {
 
 const insertKnjigovodstvo = async (knjigovodstvena_evidencija: Knjigovodstvena_evidencija) => {
     try {
-        const result = dbConnection.query(`INSERT INTO knjigovodstvena_evidencija (konto, godina_nabavke) VALUE (?, ?)`, [knjigovodstvena_evidencija.godina_nabavke, knjigovodstvena_evidencija.konto])
+        const result = dbConnection.query(`INSERT INTO knjigovodstvena_evidencija (godina_nabavke, status_id) VALUE (?, ?)`, [knjigovodstvena_evidencija.godina_nabavke, knjigovodstvena_evidencija.status_id])
         return result;
     }
 catch(e) {
@@ -33,7 +33,7 @@ catch(e) {
 
 const updateKnjigovodstvo = async (knjigovodstvena_evidencija: Knjigovodstvena_evidencija, kid: number) => {
     try {
-        const result = dbConnection.query(`UPDATE knjigovodstvena_evidencija SET konto = ?, godina_nabavke = ? WHERE kid = ?`, [knjigovodstvena_evidencija.konto, knjigovodstvena_evidencija.godina_nabavke, kid])
+        const result = dbConnection.query(`UPDATE knjigovodstvena_evidencija SET status_id = ?, godina_nabavke = ? WHERE kid = ?`, [knjigovodstvena_evidencija.status_id, knjigovodstvena_evidencija.godina_nabavke, kid])
         return result;
     }
 catch(e) {
