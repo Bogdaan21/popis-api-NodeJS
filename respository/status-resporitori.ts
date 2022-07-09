@@ -1,4 +1,4 @@
-import dbConnection from "../conncetion/db-connection";
+import dbConnection from "../common/db-connection";
 import { Status } from "../models/status-models";
 
 const getAllStatus = async () => {

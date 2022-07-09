@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import express from 'express'
-import dbConnection from './conncetion/db-connection';
+import dbConnection from './common/db-connection';
 import artikalRouter from './routing/artikal-routing';
 import mjestoRouter from './routing/mjesto-routing';
 import cijenaRouter from './routing/cijena-routing';
@@ -8,10 +8,13 @@ import knjigovodstvoRouter from './routing/knjigovodstvo-routing';
 import statusRouter from './routing/status-routing';
 import vrstaRouter from './routing/vrsta-routing';
 import cors from 'cors';
+import path from "path";
+import fileUploadRouter from './common/file-upload';
 let app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public', 'uploads')));
 
 app.use('/artikal', artikalRouter);
 app.use('/mjesto', mjestoRouter);
@@ -19,6 +22,7 @@ app.use('/cijena', cijenaRouter);
 app.use('/knjigovodstvo', knjigovodstvoRouter);
 app.use('/status', statusRouter);
 app.use('/vrsta', vrstaRouter);
+app.use(fileUploadRouter)
 
 app.listen(7000, () => {
     console.log('Server is connected at port 7000');

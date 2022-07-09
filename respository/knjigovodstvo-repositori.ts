@@ -1,4 +1,4 @@
-import dbConnection from "../conncetion/db-connection"
+import dbConnection from "../common/db-connection"
 import { Knjigovodstvena_evidencija } from "../models/knjigovodstvo-models";
 
 const getAllKnjigovodstvo = async () => {

@@ -1,4 +1,4 @@
-import dbConnection from "../conncetion/db-connection";
+import dbConnection from "../common/db-connection";
 import { Vrsta } from "../models/vrsta-models";
 
 const getAllVrsta = async () => {

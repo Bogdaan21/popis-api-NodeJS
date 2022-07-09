@@ -1,4 +1,4 @@
-import dbConnection from "../conncetion/db-connection";
+import dbConnection from "../common/db-connection";
 import { Cijena } from "../models/cijena-models";
 
 const getAllCijena = async () => {
