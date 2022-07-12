@@ -23,7 +23,7 @@ const getVrstaByID = async (vid: number) => {
 
 const insertVrsta = async (vrsta: Vrsta) => {
     try {
-        const result = await dbConnection.query(`INSERT INTO vrsta, konto (tip) VALUES (?, ?)`, [vrsta.tip, vrsta.konto]);
+        const result = await dbConnection.query(`INSERT INTO vrsta (konto, tip) VALUES (?, ?)`, [vrsta.tip, vrsta.konto]);
         return result;
     }
     catch(e) {

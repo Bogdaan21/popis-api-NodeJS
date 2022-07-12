@@ -7,6 +7,8 @@ import cijenaRouter from './routing/cijena-routing';
 import knjigovodstvoRouter from './routing/knjigovodstvo-routing';
 import statusRouter from './routing/status-routing';
 import vrstaRouter from './routing/vrsta-routing';
+import imenikRouter from './routing/imenik-routing';
+import direkttoratRouter from './routing/direktorat-routing';
 import cors from 'cors';
 import path from "path";
 import fileUploadRouter from './common/file-upload';
@@ -22,7 +24,10 @@ app.use('/cijena', cijenaRouter);
 app.use('/knjigovodstvo', knjigovodstvoRouter);
 app.use('/status', statusRouter);
 app.use('/vrsta', vrstaRouter);
-app.use(fileUploadRouter)
+app.use('/imenik', imenikRouter);
+app.use('/direktorat', direkttoratRouter);
+
+app.use(fileUploadRouter);
 
 app.listen(7000, () => {
     console.log('Server is connected at port 7000');
