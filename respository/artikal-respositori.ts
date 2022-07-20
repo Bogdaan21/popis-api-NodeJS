@@ -3,13 +3,14 @@ import { Artikal } from "../models/artikal-models";
 
 const gettingAllArtikal = async () => {
     try {
-        const result = await dbConnection.query(`SELECT a.aid, a.model, a.zaduzenje, a.inventarski_broj_stari, a.inventarski_broj_novi, 
-                                                c.cid, c.nabavna_cijena, c.sadasnja_vrijednost, 
-                                                k.kid, k.godina_nabavke, 
-                                                m.mid, m.sprat, m.broj_kancelarije, m.napomena, 
-                                                v.vid, v.tip, v.konto, 
-                                                s.sid, s.popisano, s.otpisano, s.nepopisano 
-                                                FROM artikal a, cijena c, knjigovodstvena_evidencija k, mjesto m, vrsta v, status s`);
+        const result = await dbConnection.query(`SELECT a.*, c.*, m.*, k.*, v.*, s.*
+                                                                        FROM artikal a, cijena c, mjesto m, knjigovodstvena_evidencija k, vrsta v, status s
+                                                                                WHERE a.cijena_id = c.cid
+                                                                                AND a.mjesto_id = m.mid
+                                                                                AND a.knjigovodstvena_evidencija_id = k.kid
+                                                                                AND a.vrsta_id = v.vid
+                                                                                AND k.status_id = s.sid
+                                                                                `);
         return result;
     }
     catch(e) {
