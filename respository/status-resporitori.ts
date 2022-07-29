@@ -23,7 +23,7 @@ const getStatusByID = async (sid: number) => {
 
 const insertStatus = async (status: Status) => {
     try {
-        const result = await dbConnection.query(`INSERT INTO status (popisano, otpisano, nepopisano) VALUES (?, ?, ?)`, [status.popisano, status.otpisano, status.nepopisano]);
+        const result = await dbConnection.query(`INSERT INTO status (naziv) VALUES (?)`, [status.naziv]);
         return result;
     }
     catch(e) {
@@ -33,7 +33,7 @@ const insertStatus = async (status: Status) => {
 
 const updateStatus = async (status: Status, sid: number) => {
     try {
-        const result = await dbConnection.query(`UPDATE status SET popisano = ?, otpisano = ?, nepopisano = ? WHERE sid = ?`, [status.popisano, status.otpisano, status.nepopisano, sid]);
+        const result = await dbConnection.query(`UPDATE status SET naziv = ?`, [status.naziv, sid]);
         return result;
     }
     catch(e) {

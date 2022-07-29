@@ -13,10 +13,7 @@ export class Artikal {
     napomena: string;
     tip: string;
     konto: string;
-    popisano: string;
-    otpisano: string;
-    nepopisano: string;
-    putanjaslike: string;
+    naziv: string;
 
     cijena_id: number;
     knjigovodstvena_evidencija_id: number;
