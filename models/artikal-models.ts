@@ -7,7 +7,6 @@ export class Artikal {
     nabavna_cijena: number;
     sadasnja_vrijednost: number;
     godina_nabavke: number;
-    knjigovodstvenaEvidencijaGodinaNabavke: number;
     sprat: string;
     broj_kancelarije: number;
     napomena: string;
@@ -15,13 +14,10 @@ export class Artikal {
     konto: string;
     naziv: string;
 
-    cijena_id: number;
-    knjigovodstvena_evidencija_id: number;
+    status_id: number
     mjesto_id: number;
     vrsta_id: number;
 
-    cid: number;
-    kid: number;
     mid: number;
     vid: number;
     sid: number;

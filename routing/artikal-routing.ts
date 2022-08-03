@@ -9,7 +9,7 @@ router.route('/')
     .get(artikalControler.gettingAllArtikal)
     .post(artikalControler.insertAllArtikal);
 
-router.route('/getArtikalByMjesto/:mid') // ne radi
+router.route('/getArtikalByMjesto/:mid') //radi
     .get(artikalControler.getArtikalByMjesto);
 
 router.route('/:aid')

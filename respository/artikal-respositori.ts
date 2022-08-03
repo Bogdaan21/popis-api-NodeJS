@@ -1,26 +1,31 @@
+
 import dbConnection from "../common/db-connection";
 import { Artikal } from "../models/artikal-models";
 
 const gettingAllArtikal = async () => {
-    try {
-        const result = await dbConnection.query(`SELECT a.*, c.*, m.*, k.*, v.*, s.*
-                                                                        FROM artikal a, cijena c, mjesto m, knjigovodstvena_evidencija k, vrsta v, status s
-                                                                                WHERE a.cijena_id = c.cid
-                                                                                AND a.mjesto_id = m.mid
-                                                                                AND a.knjigovodstvena_evidencija_id = k.kid
-                                                                                AND a.vrsta_id = v.vid
-                                                                                AND k.status_id = s.sid
-                                                                                `);
+
+        const result = await dbConnection.query(`SELECT a.aid, a.model, a.zaduzenje, a.inventarski_broj_stari, a.inventarski_broj_novi,
+                                                        a.nabavna_cijena, a.sadasnja_vrijednost, a.godina_nabavke,
+                                                        m.sprat, m.broj_kancelarije, m.napomena,
+                                                        v.tip, v.konto,
+                                                        s.naziv
+                                                 FROM artikal a, mjesto m, vrsta v, status s
+                                                 WHERE a.mjesto_id = m.mid
+                                                         AND a.vrsta_id = v.vid
+                                                         AND a.status_id = s.sid
+                                                         `);
         return result;
-    }
-    catch(e) {
-        return null;
-    }
 }
 
 const getArtikalById = async (aid: number) => {
     try {
-        const result = await dbConnection.query(`SELECT * FROM artikal WHERE aid = ?`, [aid]);
+        const result = await dbConnection.query(`SELECT a.aid, a.model, a.zaduzenje, a.inventarski_broj_stari, a.inventarski_broj_novi,
+                                                        a.nabavna_cijena, a.sadasnja_vrijednost, a.godina_nabavke,
+                                                        m.sprat, m.broj_kancelarije, m.napomena,
+                                                        v.tip, v.konto,
+                                                        s.naziv
+                                                 FROM artikal a, mjesto m, vrsta v, status s 
+                                                 WHERE aid = ?`, [aid]);
         return result;
     }
     catch(e) {
@@ -39,21 +44,25 @@ const getArtikalByMjesto = async (mid: number) => { // radi
 }
 
 const insertAllArtikal = async (artikal: Artikal) => {
-    try {
-        console.log(artikal);
-        const result = await dbConnection.query(`INSERT INTO artikal (model, zaduzenje, inventarski_broj_stari, inventarski_broj_novi, cijena_id, knjigovodstvena_evidencija_id, mjesto_id, vrsta_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?)`, [artikal.model, artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.cijena_id, artikal.knjigovodstvena_evidencija_id, artikal.mjesto_id, artikal.vrsta_id]);
+
+        const result = await dbConnection.query(`INSERT INTO artikal (model, zaduzenje, inventarski_broj_stari, inventarski_broj_novi, nabavna_cijena, sadasnja_vrijednost, godina_nabavke, mjesto_id, vrsta_id, status_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+                                                [artikal.model, artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.nabavna_cijena, artikal.sadasnja_vrijednost, artikal.godina_nabavke, artikal.mjesto_id, artikal.vrsta_id, artikal.status_id]);
         return result;
-    }
-    catch(e) {
-        console.log(e);
-        return null;
-    }
+
+
 }
 
 const updateAllArtikal = async (artikal: Artikal, aid: number) => {
     try {
 
-        const result = await dbConnection.query(`UPDATE artikal SET model = ?,zaduzenje = ?, inventarski_broj_stari = ?, inventarski_broj_novi = ?, cijena_id = ?, knjigovodstvena_evidencija_id = ?, mjesto_id = ?, vrsta_id = ? WHERE aid = ?`, [artikal.model,artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.cijena_id, artikal.knjigovodstvena_evidencija_id, artikal.mjesto_id, artikal.vrsta_id, aid]);
+    //     let cijena = await dbConnection.query(`SELECT id FROM cijena WHERE nabavna_cijena = ?`, [artikal.nabavna_cijena]);
+    //    return cijena;
+    //     if(cijena == null){
+    //         cijena = await dbConnection.query(`INSERT INTO cijena ( nabavna_cijana `),[artikal.nabavna_cijena]
+    //     }
+
+        const result = await dbConnection.query(`UPDATE artikal SET model = ?,zaduzenje = ?, inventarski_broj_stari = ?, inventarski_broj_novi = ?, nabavna_cijena = ?, sadasnja_vrijednost = ?, godina_nabavke = ?, mjesto_id = ?, vrsta_id = ?, status_id = ? WHERE aid = ?`, 
+                                                [artikal.model,artikal.zaduzenje, artikal.inventarski_broj_stari, artikal.inventarski_broj_novi, artikal.nabavna_cijena, artikal.sadasnja_vrijednost, artikal.godina_nabavke, artikal.mjesto_id, artikal.vrsta_id, artikal.status_id, aid]);
         return result;
     }
     catch(e) {

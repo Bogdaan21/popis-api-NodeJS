@@ -3,8 +3,6 @@ import express from 'express'
 import dbConnection from './common/db-connection';
 import artikalRouter from './routing/artikal-routing';
 import mjestoRouter from './routing/mjesto-routing';
-import cijenaRouter from './routing/cijena-routing';
-import knjigovodstvoRouter from './routing/knjigovodstvo-routing';
 import statusRouter from './routing/status-routing';
 import vrstaRouter from './routing/vrsta-routing';
 import imenikRouter from './routing/imenik-routing';
@@ -20,8 +18,6 @@ app.use(express.static(path.join(__dirname, 'public', 'uploads')));
 
 app.use('/artikal', artikalRouter);
 app.use('/mjesto', mjestoRouter);
-app.use('/cijena', cijenaRouter);
-app.use('/knjigovodstvo', knjigovodstvoRouter);
 app.use('/status', statusRouter);
 app.use('/vrsta', vrstaRouter);
 app.use('/imenik', imenikRouter);
